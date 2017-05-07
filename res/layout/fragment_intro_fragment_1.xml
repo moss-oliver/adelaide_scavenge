@@ -1,0 +1,120 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".IntroFragment_1">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+	android:orientation="vertical" >
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center"
+        android:text="Welcome to Adelaide"
+    	android:textStyle="bold"
+        android:textSize="32sp"
+    	android:layout_marginTop="10dip" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center"
+        android:text="Get ready to scavenge!"
+        android:textSize="24sp"
+    	android:layout_marginBottom="25dip" />
+    
+    <LinearLayout
+		android:orientation="horizontal"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+		android:background="#93DB70" >
+	    <TextView
+		    android:layout_width="0dp"
+	        android:layout_height="wrap_content"
+	        android:layout_weight="0.35"
+	        android:text="Explore"
+	        android:textSize="24sp" />
+	    <TextView
+		    android:layout_width="0dp"
+	        android:layout_height="wrap_content"
+	        android:layout_weight="0.65"
+	        android:text="View a quick reference to points of interest and useful locations throughout Adelaide."
+	        android:height ="100dip" />
+	</LinearLayout>
+	<LinearLayout
+		android:orientation="horizontal"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+		android:background="#AFEEEE"
+    	android:layout_marginTop="10dip" >
+	    <TextView
+		    android:layout_width="0dp"
+	        android:layout_height="wrap_content"
+	        android:layout_weight="0.35"
+	        android:text="Course"
+	        android:textSize="24sp" />
+	    <TextView
+		    android:layout_width="0dp"
+	        android:layout_height="wrap_content"
+	        android:layout_weight="0.65"
+	        android:text="Follow set courses to uncover photos and information. A path is suggested to guide you, but points don't need to be completed in order."
+	        android:height ="100dip" />
+	</LinearLayout>
+	<LinearLayout 
+		android:orientation="horizontal"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+		android:background="#FEF1B5"
+    	android:layout_marginTop= "10dip" >
+	    <TextView
+		    android:layout_width="0dp"
+	        android:layout_height="wrap_content"
+	        android:layout_weight="0.35"
+	        android:text="Secrets"
+	        android:textSize="24sp" />
+	    <TextView
+		    android:layout_width="0dp"
+	        android:layout_height="wrap_content"
+	        android:layout_weight="0.65"
+	        android:text="Throughout Adelaide, there are hidden photos for you to scavenge. As you pass by a secret location, you will recieve a notification automatically."
+    		android:height ="100dip" />
+	</LinearLayout>
+	
+	<FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp">
+		<ImageView
+	        android:id="@+id/imageView_prev"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:src="@drawable/ic_action_previous_item" 
+	        android:visibility="gone"/>
+	
+	    <TextView
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_gravity="center_horizontal"
+	        android:gravity="center"
+	        android:text="Swipe to the left to continue"
+	    	android:textStyle="bold"
+	    	android:layout_marginTop="10dip" />
+	    
+	    <ImageView
+	        android:id="@+id/imageView_next"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_gravity="right"
+	        android:gravity="right"
+	        android:src="@drawable/ic_action_next_item" />
+
+    </FrameLayout>
+
+</LinearLayout>
+</ScrollView>

@@ -1,0 +1,43 @@
+<menu 
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:myapp="http://schemas.android.com/apk/res-auto" >
+
+    <item
+        android:id="@+id/action_goto_course"
+        myapp:showAsAction="always"
+        android:title="Go to course"
+        android:icon="@drawable/ic_action_place"/>
+    <item
+        android:id="@+id/action_close"
+        myapp:showAsAction="always"
+        android:title="Stop course"
+        android:icon="@drawable/ic_action_cancel"/>
+    <!--  
+    <item
+        android:id="@+id/action_photo"
+        myapp:showAsAction="always"
+        android:title="@string/action_photo"
+        android:icon="@drawable/ic_action_photo"/>
+    -->
+    <!--
+    <item
+        android:id="@+id/action_settings"
+        android:orderInCategory="100"
+        myapp:showAsAction="always"
+        android:title="@string/action_settings"
+    	android:icon="@drawable/ic_action_overflow_white"/>
+    -->
+    
+    
+    <item
+        android:id="@+id/action_help"
+        myapp:showAsAction="withText"
+        android:title="Help"/>
+    
+    <item
+        android:id="@+id/action_about"
+        myapp:showAsAction="withText"
+        android:title="About"/>
+    
+
+</menu>

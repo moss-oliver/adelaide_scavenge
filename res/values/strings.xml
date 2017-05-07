@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Adelaide Scavenge</string>
+    <string name="action_settings">Settings</string>
+    <string name="action_photo">Photo</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="hello_blank_fragment">Adelaide Scavenge Help</string>
+    <string name="title_activity_intro_view_pager">Adelaide Scavenge Help</string>
+
+    <color name="transparent">#00FFFFFF</color>
+    <color name="black">#ff000000</color>
+
+    <string name="title_activity_about">About</string>
+
+</resources>

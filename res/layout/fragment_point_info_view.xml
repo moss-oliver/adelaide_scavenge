@@ -1,0 +1,68 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PointInfoViewFragment"
+	android:orientation="vertical" >
+
+    <!-- TODO: Update blank fragment layout -->
+    
+    <TextView
+        android:id = "@+id/point_info_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+		android:textSize="30sp"
+    	android:textStyle="bold"
+		android:gravity="top"
+        android:text="name"
+    	android:layout_marginLeft="25dp"
+    	android:layout_marginTop="42dp" />
+    
+    <LinearLayout
+	    android:layout_width="match_parent"
+	    android:layout_height="match_parent"
+	    android:layout_gravity="center"
+	    android:orientation="horizontal"
+    	android:layout_marginLeft="18dip" >
+	    <TextView
+	        android:maxLines = "30"
+			android:scrollbars = "vertical"
+	
+	        android:id = "@+id/point_info_desc"
+	        android:layout_width="0dp"
+	        android:layout_height="wrap_content"
+		    android:layout_weight=".65"
+	    	android:autoLink="web"
+	        android:text="description blahblah blah blahblahblah blah blah" />
+    	<LinearLayout
+		    android:layout_width="0dp"
+		    android:layout_height="wrap_content"
+		    android:orientation="vertical"
+		    android:layout_weight=".35"
+		    android:gravity="bottom"
+		    android:layout_gravity="bottom" >
+			<TextView
+		        android:id="@+id/point_info_point_found"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+	            android:layout_gravity="center"
+				android:textSize="20sp"
+    			android:textStyle="bold"
+		        android:text="5/7" />
+			<Button
+	            android:id="@+id/btn_point_info_start"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_gravity="center"
+	    		android:onClick="onBtnClicked"
+	            android:text="View"
+				android:background="#AFEEEE"
+				android:layout_marginBottom="20dp"
+				android:width="85dp"  />
+		</LinearLayout>
+	</LinearLayout>
+</LinearLayout>
+
+
+
+

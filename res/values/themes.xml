@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- the theme applied to the application or activity -->
+    <style name="transparentActionbar" parent="@style/Theme.AppCompat.Light.DarkActionBar">
+			
+        <!-- Support library compatibility -->
+        <item name="windowActionBarOverlay">true</item>
+        
+        <item name="vpiIconPageIndicatorStyle">@style/Widget.IconPageIndicator</item>
+        <item name="vpiTabPageIndicatorStyle">@style/Widget.TabPageIndicator</item>       
+        <item name="android:textAppearance">@style/TextAppearance.TabPageIndicator</item>
+    </style>
+    
+    <style name="TextAppearance.TabPageIndicator" parent="Widget">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/vpi__light_theme</item>
+    </style>
+</resources>

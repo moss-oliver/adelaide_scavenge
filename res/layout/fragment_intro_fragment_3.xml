@@ -1,0 +1,68 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".IntroFragment_3">
+    
+<LinearLayout 
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <TextView
+	    android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="24sp"
+        android:text="By the way, did you know that you can use the free WIFI?" />
+    <TextView
+	    android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Adelaide city and Internode have worked to create a city-wide WIFI network that covers most of the CBD. For the best Adelaide Scavenge experience, connect to this network where possible" />
+	<TextView
+	    android:layout_marginTop="15dp"
+    	android:textStyle="bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Instructions to connect:" />
+	<TextView
+	    android:layout_marginTop="5dp"
+	    android:textSize="12sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Look in your WiFi network settings or scan for wireless networks and select the network 'Internode'
+\n\nIf you do not see the network name 'Internode' you may need to move to a different location, you may not be close enough to the hotspot.
+\n\nOpen your web browser and the login page should appear, if not, when you navigate to a website, you'll be automatically redirected to the login page.
+\n\nEnter your login details or click Guest Login if applicable.
+\n\nYou can now browse the Internet." />
+    
+    <LinearLayout
+    	android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+    	android:layout_marginTop="25dip">
+
+	    <TextView
+	        android:layout_width="0dp"
+	        android:layout_height="wrap_content"
+	        android:layout_gravity="top"
+	        android:layout_weight="0.65"
+	        android:text="And that&apos;s it! We hope you enjoy exploring Adelaide." />
+
+	    <Button
+	        android:text="Done"
+	        android:layout_width="0dp"
+	        android:layout_height="wrap_content"
+	        android:layout_gravity="center_vertical"
+	        android:layout_weight="0.35"
+			android:background="#AFEEEE"
+			android:onClick="onBtnClicked" />
+
+	    
+	</LinearLayout>
+    
+</LinearLayout>
+</ScrollView>

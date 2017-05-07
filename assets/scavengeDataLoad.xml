@@ -1,0 +1,535 @@
+<?xml version="1.0"?>
+<scavengeDb>
+	<databaseVersion id="1"> 
+		<create>
+			CREATE TABLE DatabaseVersion 
+			(
+				dbVersionId 		INTEGER PRIMARY KEY ASC AUTOINCREMENT 	NOT NULL,
+				dbActive 			BOOLEAN 				NOT NULL,
+				dbDateReleased		DateTime				NOT NULL,
+				dbDateUpdated		DateTime				NOT NULL
+			);
+			CREATE TABLE Category
+			(
+				categoryId 		INTEGER PRIMARY KEY ASC AUTOINCREMENT 	NOT NULL,
+				categoryName 	VARCHAR(20) 							NOT NULL
+			);
+			
+			CREATE TABLE Ding 
+			(
+				dingId			INTEGER PRIMARY KEY ASC AUTOINCREMENT	NOT NULL,
+				loc_lat			REAL 									NOT NULL,
+				loc_long 		REAL 									NOT NULL,
+				found 			BOOLEAN 								NOT NULL,
+				unfoundTitle 	INTEGER REFERENCES Title(titleId) 		NOT NULL,
+				foundTitle 		INTEGER REFERENCES Title(titleId) 		NOT NULL,
+				url 			VARCHAR(225) 							NOT NULL,
+				photographer 	VARCHAR(255) 							NOT NULL,
+				circa 			INTEGER(4) 								NOT NULL,
+				datefound		VARCHAR(30)								
+			);
+			
+			CREATE TABLE Course
+			(
+				courseId		INTEGER PRIMARY KEY ASC AUTOINCREMENT 	NOT NULL,
+				categoryId		INTEGER REFERENCES Category(categoryID) NOT NULL,
+				courseName		VARCHAR(40) 							NOT NULL,
+				description		VARCHAR(255) 							NOT NULL
+			
+			);
+			
+			CREATE TABLE CourseLocation
+			(
+				courseId		INTEGER REFERENCES Course(courseID) 	NOT NULL,
+				DingId			INTEGER REFERENCES Ding(dingID) 		NOT NULL,
+				orderNumber		INTEGER 								NOT NULL
+			);
+			
+			CREATE TABLE Title
+			(
+				titleId			INTEGER PRIMARY KEY ASC AUTOINCREMENT 	NOT NULL,
+				title			VARCHAR(50) 							NOT NULL,
+				description		VARCHAR(255) 							NOT NULL
+			);
+		</create> 
+		<insert>
+			INSERT INTO DatabaseVersion (dbVersionId, dbActive, dbDateReleased, dbDateUpdated ) VALUES (1, 1, '2013-12-04', '2013-12-04');
+
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (1,'-34.928814','138.59916','FALSE','1','1','https://www.adelaidemetro.com.au/extension/adelaidemetro/design/adelaidemetro/images/logo.png','','');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (2,'-34.928976','138.601359','FALSE','2','2','http://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Sfxcathedral2006.jpg/800px-Sfxcathedral2006.jpg','Carlos Eduardo Hernández Castillo','2006');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (3,'-34.928365','138.600635','FALSE','30','3','http://images.slsa.sa.gov.au/mpcimg/60750/B60617.jpg','','1925');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (4,'-34.927203','138.599396','FALSE','4','23','http://images.slsa.sa.gov.au/mpcimg/71750/B71606.jpg','','1916');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (5,'-34.927066','138.599621','FALSE','92','5','http://farm4.staticflickr.com/3365/3254149243_59bc767ce9_o.jpg','Ernest Gall','1895');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (6,'-34.928685','138.599761','FALSE','6','6','http://www.cityofadelaide.com.au/assets/coa/Sights/coa-sights-aboriginal-attractions-vicsq-tarndanyangga.jpg','','');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (7,'-34.929415','138.598956','FALSE','7','7','http://www.cityofadelaide.com.au/images/made/assets/coa/Sights/sights-central-market92_460_260_s_c1.jpg','','');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (8,'-34.929767','138.600029','FALSE','8','8','http://upload.wikimedia.org/wikipedia/en/thumb/d/d5/Adelaide_VictoriaSq_Fountain_Night1.JPG/450px-Adelaide_VictoriaSq_Fountain_Night1.JPG','','');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (9,'-34.927436','138.599804','FALSE','91','9','http://images.slsa.sa.gov.au/mpcimg/60750/B60616.jpg','','');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (10,'-34.92821','138.600415','FALSE','10','10','http://images.slsa.sa.gov.au/mpcimg/59000/B58973_5.jpg','','1925');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (11,'-34.930171','138.599804','FALSE','11','11','http://images.slsa.sa.gov.au/mpcimg/05500/B5447.jpg','','');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (12,'-34.927436','138.598967','FALSE','0','12','http://images.slsa.sa.gov.au/mpcimg/03500/B3271.jpg ','','1926');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (13,'-34.927269','138.599375','FALSE','0','13','http://images.slsa.sa.gov.au/mpcimg/02500/B2372.jpg','','1924');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (14,'-34.927093','138.60004','FALSE','0','14','http://images.slsa.sa.gov.au/mpcimg/14000/B13963.jpg','','1957');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (15,'-34.927462','138.599063','FALSE','0','15','http://images.slsa.sa.gov.au/mpcimg/17500/B17459.jpg','','1921');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (16,'-34.927128','138.599332','FALSE','0','16','http://images.slsa.sa.gov.au/mpcimg/02750/B2606.jpg','Ernest Gall','1900');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (17,'-34.927328','138.599432','FALSE','0','17','http://images.slsa.sa.gov.au/mpcimg/13000/B12922.jpg','','1954');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (18,'-34.927084','138.600619','FALSE','0','18','http://images.slsa.sa.gov.au/mpcimg/03500/B3359.jpg','','1884');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (19,'-34.927225','138.596907','FALSE','0','19','http://images.slsa.sa.gov.au/mpcimg/02500/B2287.jpg','','1924');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (20,'-34.927295','138.597175','FALSE','0','20','http://images.slsa.sa.gov.au/mpcimg/10750/B10691.jpg','','1877');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (21,'-34.926301','138.599589','FALSE','0','21','http://images.slsa.sa.gov.au/mpcimg/05250/B5142.jpg','','1924');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (22,'-34.929001','138.600877','FALSE','0','22','http://images.slsa.sa.gov.au/mpcimg/60750/B60618.jpg','','1925');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (23,'-34.927174','138.600075','FALSE','26','24','http://farm8.staticflickr.com/7063/6808752004_9fd6f65fbc_b.jpg','','1860');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (24,'-34.92713','138.600585','FALSE','0','25','http://farm8.staticflickr.com/7040/6808752198_6779dc46a6_o.jpg','','1860');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (25,'-34.927707','138.600649','FALSE','0','27','http://farm8.staticflickr.com/7050/6954861103_7f435666ca_b.jpg','','1860');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (26,'-34.92106','138.605411','FALSE','0','28','http://farm8.staticflickr.com/7206/6954861275_9ddf0bae26_o.jpg','','1850-1859');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (27,'-34.914138','138.612715','FALSE','0','29','http://farm8.staticflickr.com/7207/6954861365_41e0911f46_o.jpg','','1860');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (28,'-34.923639','138.599605','FALSE','0','31','http://farm4.staticflickr.com/3811/11829511333_5b1faf8713_o.jpg','','1963');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (29,'-34.922875','138.599601','FALSE','87','32','http://farm4.staticflickr.com/3831/11844640124_513c0f445d_b.jpg','D. Darian Smith','1935');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (30,'-34.922735','138.603496','FALSE','89','33','http://farm4.staticflickr.com/3822/11788483524_8d66acf340_b.jpg','','1977');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (31,'-34.922607','138.604317','FALSE','67','34','http://farm4.staticflickr.com/3768/11788843886_0c090624b6_b.jpg','','1928');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (32,'-34.922941','138.600304','FALSE','0','35','http://farm8.staticflickr.com/7361/11787225566_34cd79f385_b.jpg','','1950');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (33,'-34.921367','138.605078','FALSE','0','36','http://farm8.staticflickr.com/7348/11721792103_c7b18df9e4_b.jpg','','1928');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (34,'-34.923812','138.599693','FALSE','88','37','http://farm3.staticflickr.com/2841/11721794093_d5b360e2fa_b.jpg','','1943');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (35,'-34.921279','138.599092','FALSE','0','38','http://farm8.staticflickr.com/7301/11721899244_aecf0a2630_b.jpg','','1952');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (36,'-34.923056','138.596174','FALSE','0','39','http://farm8.staticflickr.com/7392/11722298586_d2b4fb87cf_b.jpg','','1940');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (37,'-34.92344','138.603457','FALSE','70','40','http://farm6.staticflickr.com/5490/11525840215_a5b7860a6e_b.jpg','','1950');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (38,'-34.92237','138.601871','FALSE','0','41','http://farm3.staticflickr.com/2894/11525840555_2b63df4491_b.jpg','','1940');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (39,'-34.924006','138.603222','FALSE','0','42','http://farm3.staticflickr.com/2815/11525840845_4fb63fbac7_b.jpg','','1940');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (40,'-34.921053','138.595227','FALSE','71','71','','','');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (41,'-34.921413','138.597695','FALSE','93','72','http://images.slsa.sa.gov.au/mpcimg/60750/B60624.jpg','','1948');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (42,'-34.920885','138.597588','FALSE','73','73','','','');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (43,'-34.921167','138.598854','FALSE','74','74','','','');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (44,'-34.919496','138.598596','FALSE','75','75','','','');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (45,'-34.921167','138.599626','FALSE','76','76','','','');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (46,'-34.921053','138.601622','FALSE','94','77','http://images.slsa.sa.gov.au/mpcimg/70750/B70742.jpg','','1940');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (47,'-34.920762','138.60233','FALSE','78','78','','','');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (48,'-34.920745','138.603059','FALSE','79','79','','','');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (49,'-34.920287','138.603596','FALSE','80','80','','','');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (50,'-34.920076','138.603016','FALSE','81','81','','','');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (51,'-34.920375','138.604926','FALSE','82','82','','','');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (52,'-34.920745','138.605291','FALSE','83','83','','','');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (53,'-34.92078','138.606793','FALSE','84','84','','','');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (54,'-34.921343','138.605913','FALSE','85','85','','','');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (55,'-34.920311','138.597772','FALSE','0','86','http://images.slsa.sa.gov.au/mpcimg/24250/B24025.jpg','','1940');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (56,'-34.922273','138.606709','FALSE','0','90','http://farm4.staticflickr.com/3738/11788325273_5f57351269_b.jpg','','1969');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (57,'-34.922682','138.605382','FALSE','69','43','http://farm6.staticflickr.com/5187/5637180724_79c326cb57_o.jpg','John Gazard','1924');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (58,'-34.92385','138.603899','FALSE','68','44','http://farm6.staticflickr.com/5188/5637179492_9dbd69239b_o.jpg','Samuel White Sweet','1886');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (59,'-34.922812','138.60436','FALSE','0','45','http://farm6.staticflickr.com/5230/5637180426_13772f88e9_o.jpg','','1934');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (60,'-34.92353','138.604934','FALSE','0','46','http://farm8.staticflickr.com/7061/6922435213_b3ddb6c5c5_o.jpg ','Francis Gabriel','1920');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (61,'-34.921471','138.597692','FALSE','0','47','http://farm6.staticflickr.com/5228/5636605417_bafe514d21_o.jpg','','1863');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (62,'-34.930822','138.600063','FALSE','0','48','http://farm3.staticflickr.com/2447/3943282923_de24d3997a_o.jpg','','1924');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (63,'-34.915779','138.613917','FALSE','49','49','','','');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (64,'-34.915709','138.611428','FALSE','49','49','','','');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (65,'-34.915849','138.609668','FALSE','49','49','','','');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (66,'-34.915163','138.607651','FALSE','49','49','','','');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (67,'-34.914741','138.606964','FALSE','49','49','','','');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (68,'-34.913791','138.608359','FALSE','49','49','','','');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (69,'-34.913668','138.61014','FALSE','49','49','','','');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (70,'-34.912084','138.613058','FALSE','49','49','','','');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (71,'-34.913738','138.613402','FALSE','49','49','','','');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (72,'-34.915779','138.613917','FALSE','49','49','','','');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (73,'-34.915251','138.597051','FALSE','50','50','','','');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (74,'-34.914565','138.596278','FALSE','50','50','','','');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (75,'-34.915005','138.595227','FALSE','50','50','','','');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (76,'-34.916377','138.595613','FALSE','50','50','','','');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (77,'-34.916131','138.596944','FALSE','50','50','','','');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (78,'-34.915251','138.597051','FALSE','50','50','','','');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (79,'-34.915251','138.597051','FALSE','51','51','','','');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (80,'-34.914565','138.596278','FALSE','51','51','','','');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (81,'-34.915005','138.595227','FALSE','51','51','','','');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (82,'-34.916377','138.595613','FALSE','51','51','','','');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (83,'-34.916131','138.596944','FALSE','51','51','','','');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (84,'-34.915251','138.597051','FALSE','51','51','','','');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (85,'-34.913263','138.610333','FALSE','52','52','','','');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (86,'-34.913738','138.607737','FALSE','52','52','','','');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (87,'-34.914864','138.606364','FALSE','52','52','','','');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (88,'-34.91497','138.605119','FALSE','52','52','','','');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (89,'-34.913879','138.604389','FALSE','52','52','','','');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (90,'-34.911802','138.606793','FALSE','52','52','','','');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (91,'-34.912665','138.608273','FALSE','52','52','','','');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (92,'-34.913263','138.610333','FALSE','52','52','','','');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (93,'-34.922861','138.601364','FALSE','53','53','','','');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (94,'-34.922878','138.600956','FALSE','54','54','','','');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (95,'-34.91676','138.596177','FALSE','55','55','','','');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (96,'-34.916068','138.594058','FALSE','55','55','','','');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (97,'-34.917437','138.594235','FALSE','55','55','','','');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (98,'-34.917837','138.596241','FALSE','55','55','','','');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (99,'-34.91676','138.596177','FALSE','55','55','','','');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (100,'-34.922315','138.610998','FALSE','56','56','','','');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (101,'-34.921189','138.610977','FALSE','56','56','','','');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (102,'-34.920697','138.612887','FALSE','56','56','','','');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (103,'-34.919747','138.614796','FALSE','56','56','','','');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (104,'-34.921893','138.615247','FALSE','56','56','','','');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (105,'-34.922175','138.612908','FALSE','56','56','','','');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (106,'-34.922315','138.610998','FALSE','56','56','','','');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (107,'-34.922474','138.611041','FALSE','57','57','','','');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (108,'-34.922386','138.611599','FALSE','57','57','','','');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (109,'-34.92272','138.611513','FALSE','57','57','','','');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (110,'-34.92272','138.611041','FALSE','57','57','','','');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (111,'-34.922474','138.611041','FALSE','57','57','','','');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (112,'-34.901002','138.592084','FALSE','58','58','','','');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (113,'-34.901715','138.589552','FALSE','58','58','','','');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (114,'-34.899506','138.588737','FALSE','58','58','','','');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (115,'-34.899154','138.591419','FALSE','58','58','','','');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (116,'-34.901002','138.592084','FALSE','58','58','','','');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (117,'','','FALSE','70','60','','','');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (118,'-34.902883','138.589845','FALSE','61','61','','','');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (119,'-34.899489','138.588179','FALSE','61','61','','','');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (120,'-34.904326','138.582324','FALSE','61','61','','','');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (121,'-34.908805','138.581401','FALSE','61','61','','','');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (122,'-34.912438','138.582785','FALSE','61','61','','','');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (123,'-34.912236','138.58403','FALSE','61','61','','','');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (124,'-34.912702','138.585757','FALSE','61','61','','','');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (125,'-34.912183','138.586647','FALSE','61','61','','','');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (126,'-34.91177','138.588439','FALSE','61','61','','','');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (127,'-34.910907','138.588031','FALSE','61','61','','','');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (128,'-34.911576','138.583354','FALSE','61','61','','','');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (129,'-34.910221','138.583064','FALSE','61','61','','','');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (130,'-34.909922','138.584255','FALSE','61','61','','','');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (131,'-34.907203','138.583236','FALSE','61','61','','','');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (132,'-34.906948','138.584105','FALSE','61','61','','','');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (133,'-34.905584','138.583815','FALSE','61','61','','','');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (134,'-34.905338','138.585371','FALSE','61','61','','','');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (135,'-34.904018','138.584952','FALSE','61','61','','','');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (136,'-34.902883','138.589845','FALSE','61','61','','','');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (137,'-34.912438','138.582785','FALSE','62','62','','','');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (138,'-34.912183','138.586647','FALSE','62','62','','','');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (139,'-34.912702','138.585757','FALSE','62','62','','','');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (140,'-34.912236','138.58403','FALSE','62','62','','','');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (141,'-34.912438','138.582785','FALSE','62','62','','','');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (142,'-34.914548','138.583929','FALSE','62','62','','','');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (143,'-34.914776','138.585152','FALSE','62','62','','','');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (144,'-34.917328','138.58732','FALSE','62','62','','','');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (145,'-34.917029','138.589465','FALSE','62','62','','','');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (146,'-34.917592','138.591718','FALSE','62','62','','','');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (147,'-34.917486','138.592705','FALSE','62','62','','','');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (148,'-34.915075','138.592748','FALSE','62','62','','','');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (149,'-34.913545','138.593371','FALSE','62','62','','','');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (150,'-34.91277','138.593199','FALSE','62','62','','','');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (151,'-34.912894','138.592212','FALSE','62','62','','','');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (152,'-34.910853','138.591354','FALSE','62','62','','','');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (153,'-34.911099','138.589573','FALSE','62','62','','','');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (154,'-34.912183','138.586647','FALSE','62','62','','','');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (155,'-34.918929','138.596986','FALSE','63','63','','','');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (156,'-34.914275','138.604132','FALSE','66','66','','','');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (157,'-34.917266','138.585517','FALSE','64','64','','','');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (158,'-34.916932','138.585088','FALSE','64','64','','','');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (159,'-34.916976','138.584519','FALSE','64','64','','','');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (160,'-34.917899','138.58394','FALSE','64','64','','','');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (161,'-34.918093','138.584455','FALSE','64','64','','','');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (162,'-34.917776','138.58556','FALSE','64','64','','','');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (163,'-34.917266','138.585517','FALSE','64','64','','','');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (164,'-34.920732','138.610633','FALSE','65','65','','','');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (165,'-34.918973','138.610472','FALSE','65','65','','','');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (166,'-34.918049','138.608766','FALSE','65','65','','','');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (167,'-34.915894','138.608627','FALSE','65','65','','','');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (168,'-34.915894','138.613959','FALSE','65','65','','','');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (169,'-34.919282','138.614871','FALSE','65','65','','','');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (170,'-34.920426','138.612982','FALSE','65','65','','','');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (171,'-34.912831','138.594015','FALSE','59','60','http://images.slsa.sa.gov.au/mpcimg/24000/B23766.jpg','','1938');
+INSERT INTO Ding (dingId, loc_lat, loc_long, found, unfoundTitle, foundTitle, url, photographer, circa)  VALUES (172,'-34.920732','138.610633','FALSE','65','65','','','');
+
+INSERT INTO Title(titleId,title,description) VALUES ('0','Secret','It''s a secret');
+INSERT INTO Title(titleId,title,description) VALUES ('1','Tram Stop','Victoria Square Tram Stop.  FREE travel is available on the tram between South Terrace and the UNISA stop on North Terrace.  North bound travel to the Adelaide Entertainment Centre. South bound travel to Glenelg. <a>https://www.adelaidemetro.com.au/routes/Tram</a>');
+INSERT INTO Title(titleId,title,description) VALUES ('2','St Xavier''s Cathedral','Construction of the Catholic Cathedral began in 1851. <a>http://www.adelcathparish.org/Catholic-Cathedral/Home-Cathedral.htm</a>');
+INSERT INTO Title(titleId,title,description) VALUES ('3','Charles Cameron Kingston','SLSA B 60617. Flooding after heavy rain, February 6th 1925.');
+INSERT INTO Title(titleId,title,description) VALUES ('4','Captain Charles Sturt monument','Monument to the explorer Captain Charles Sturt. Unveiled on the 21 December 1916 by the Governor of South Australia Sir Henry L. Galway. <a>http://adb.anu.edu.au/biography/sturt-charles-2712</a>');
+INSERT INTO Title(titleId,title,description) VALUES ('5','Post Office','SLSA B5311. Looking south over Victoria Square, Adelaide, from the Post Office clock tower. ');
+INSERT INTO Title(titleId,title,description) VALUES ('6','Flags','The Aboriginal flag, designed by Harold Thomas, a Luritji man, was first flown in Victoria Square / Tarntanyangga in July 1971 at a land rights rally. Today, the Aboriginal flag has come to be a powerful symbol for reconciliation and hope for many Aboriginal people throughout Australia.');
+INSERT INTO Title(titleId,title,description) VALUES ('7','Central Markets','Enter the Central Markets here from Victoria Square / Tarntanyangga. <a>http://www.adelaidecentralmarket.com.au/</a>');
+INSERT INTO Title(titleId,title,description) VALUES ('8','The Three Rivers Fountain','The Three Rivers Fountain was designed by John Dowie, representing the three main rivers that provide much of Adelaide''s water. A woman holding a swan depicts the Torrens River. A woman with a heron depicts the Onkaparinga River.  An aboriginal man holding an ibis represents the Murray River.\n<a>http://www.cityofadelaide.com.au/sights/the-three-rivers</a>');
+INSERT INTO Title(titleId,title,description) VALUES ('9','Flooding in Victoria Square','SLSA B60616. Flooding after heavy rain, February 6th 1925');
+INSERT INTO Title(titleId,title,description) VALUES ('10','Victoria Square','SLSA 58973/5. Victoria Square showing trams. One of 170 photographs in an album presented to Mr. H.L. Goldbeck from G.W. Gray in October 1925. They consist of views of South Australia, W.A., Victoria and N.S.W.');
+INSERT INTO Title(titleId,title,description) VALUES ('11','Gouger Street','Corner of Gouger Street and Victoria Square.  One of the main food districts in Adelaide CBD, features The Adelaide Central Markets, China Town restaurants and pubs. ');
+INSERT INTO Title(titleId,title,description) VALUES ('12','Victoria Square','SLSA B 3271. The western side of Victoria Square near Franklin Street. Several shop fronts have been built into the Morialta Chambers. At the far end stands the Windsor Castle Hotel and buildings at the back of the General Post Office can be seen in the background. Several cars are angled parked at the kerb and pedestrians are moving about their business. [On back of photograph] Acre 267. Victoria Square, west side, 22nd February, 1926.  Division between Morialta Chambers and the three storey building on the left is 38 yards south of Franklin Street. ');
+INSERT INTO Title(titleId,title,description) VALUES ('13','Corner of Franklin Street','SLSA B 2372. Corner of Franklin Street and Victoria Square, 22nd November 1924, looking north west from Victoria Square. The extreme left is 43 yards south of Franklin Street. Shop fronts and verandahs were installed in part of Morialta Chambers in 1925.');
+INSERT INTO Title(titleId,title,description) VALUES ('14','Victoria Square','SLSA B 13963. Victoria Square, west side and south side of Franklin Street, 26th December, 1957.The twelve storey building was completed in 1957, Franklin Street frontage: 16 1/4 yards. Victoria Square frontage: 38 yards.');
+INSERT INTO Title(titleId,title,description) VALUES ('15','Graves Co.Coach Last Trip','SLSA B 17459. Graves Co. coach leaving Adelaide on its last trip to Birdwood, 30th April 1921.');
+INSERT INTO Title(titleId,title,description) VALUES ('16','Victoria Square','SLSA B 2606. Victoria Square, Adelaide, west side, looking south from Franklin Street. A man and his dog are crossing the road in front of a horse drawn waggon. The square has iron railings and telegraph poles are prominent in the view. The extreme right of the photograph is 52 yards south of Franklin Street.');
+INSERT INTO Title(titleId,title,description) VALUES ('17','The Windsor Castle Hotel','SLSA B 12922. Victoria Square, west side and south side of Franklin Street, showing the Windsor Castle Hotel, 25th January, 1954. Right side of the Hotel has a frontage of 31 1/4 yards on Franklin Street, left side frontage on Victoria Square: 15 1/4 yards.. This building demolished in 1954');
+INSERT INTO Title(titleId,title,description) VALUES ('18','Victoria Square','SLSA B 3359. The Victoria Square gardens, surrounded by wrought iron fencing, are viewed through telegraph wires producing an interesting effect. In the foreground cab horses are feeding from nosebags. The National Mutual Life building is seen on the opposite side of the Square in its original position on the corner of Grote Street. In 1979, the facade of this building and its original roof were moved 34 metres north to make way for the SGIC Building.');
+INSERT INTO Title(titleId,title,description) VALUES ('19','Franklin Street','SLSA B 2287. Franklin Street, south side, 17th July 1924 showing Nestle''s building erected in 1924, its western wall is opposite a point 4 yards east of the east side of Bentham Street');
+INSERT INTO Title(titleId,title,description) VALUES ('20','Franklin Street','SLSA B 10691.  Franklin Street, south side showint the premises of Coach Builders Morcombe and Clarke. The right side is 35 yards east of Pitt Street. The frontage of the two buildings is 12 1/2 yards.');
+INSERT INTO Title(titleId,title,description) VALUES ('21','King William Street','SLSA B 5142. King William Street looking towards Victoria Square.');
+INSERT INTO Title(titleId,title,description) VALUES ('22','Flooding in Victoria Square','SLSA B60618. Flooding after heavy rain, February 6th, 1925');
+INSERT INTO Title(titleId,title,description) VALUES ('23','Unveiling of the Captain Charles Sturt monument, Victoria Square.','SLSA B 71606. Crowds present at unveiling of the Captain Charles Sturt monument, corner of Franklin and King William Streets, Victoria Square corner.');
+INSERT INTO Title(titleId,title,description) VALUES ('24','John McDouall Stuart','SLSA B 501. John McDouall Stuart, Explorer and Surveyor led expeditions inland and in 1861-1982 journeyed from Adelaide to the Indian Ocean. More information about John McDouall Stuart can be found here <a>http://adb.anu.edu.au/biography/stuart-john-mcdouall-4662</a>.');
+INSERT INTO Title(titleId,title,description) VALUES ('25','John McDouall Stuart','SLSA B 3724. A full length portrait of John McDouall Stuart, explorer, standing facing the photographer. Bearded and wearing a frock-coat, he is resting his right hand on a pillar and is holding a scroll. More information about John McDouall Stuart can be found here <a>http://adb.anu.edu.au/biography/stuart-john-mcdouall-4662</a>.');
+INSERT INTO Title(titleId,title,description) VALUES ('26','Statue of John McDouall Stuart','Explorer and Surveyor.  John McDouall Stuart led expeditions inland and in 1861-1982 journeyed from Adelaide to the Indian Ocean. More information about John McDouall Stuart can be found here <a>http://adb.anu.edu.au/biography/stuart-john-mcdouall-4662</a>.');
+INSERT INTO Title(titleId,title,description) VALUES ('27','John McDouall Stuart','SLSA B 502. John McDouall Stuart, Explorer and Surveyor led expeditions inland and in 1861-1982 journeyed from Adelaide to the Indian Ocean. More information about John McDouall Stuart can be found here <a>http://adb.anu.edu.au/biography/stuart-john-mcdouall-4662</a>.');
+INSERT INTO Title(titleId,title,description) VALUES ('28','John McDouall Stuart','SLSA B 6912/C6. Portrait of John McDouall Stuart, explorer, from the S.A. Northern Pioneers'' composite, 1850-1859. More information about John McDouall Stuart can be found here <a>http://adb.anu.edu.au/biography/stuart-john-mcdouall-4662</a>.');
+INSERT INTO Title(titleId,title,description) VALUES ('29','John McDouall Stuart','SLSA B 14663.  John McDouall Stuart, Explorer and Surveyor led expeditions inland and in 1861-1982 journeyed from Adelaide to the Indian Ocean. More information about John McDouall Stuart can be found here <a>http://adb.anu.edu.au/biography/stuart-john-mcdouall-4662</a>.');
+INSERT INTO Title(titleId,title,description) VALUES ('30','Charles Cameron Kingston','Charles Cameron Kingston. Patriot and Statesman.  For more information about Charles Cameron Kingston go to <a>http://adb.anu.edu.au/biography/kingston-charles-cameron-6966</a>.');
+INSERT INTO Title(titleId,title,description) VALUES ('31','Sands and McDougall building','SLSA B 15026. East side of King William Street. Taken 9th August 1963. The building still stands.');
+INSERT INTO Title(titleId,title,description) VALUES ('32','Colonial Mutual Life Building','SLSA B 6622. Colonial Mutual Life Building on the corner of King William Street and Hindley Street');
+INSERT INTO Title(titleId,title,description) VALUES ('33','Coles Building','SLSA B 35076. Coles building on the corner of Rundle Mall and Charles Street. ');
+INSERT INTO Title(titleId,title,description) VALUES ('34','Hotel Richmond','SLSA B 5149. Hotel Richmond, Rundle Street, north side, 25 January 1929, far side of Hotel is 2 yards west of Twin street and frontage is 17.5 yards. The hotel was erected in 1926-28 on the site formerly occupied by the Plough and Harrow Hotel.');
+INSERT INTO Title(titleId,title,description) VALUES ('35','15 Rundle Street','SLSA B 60669. Premises of Charlick''s, tea and coffee specialists, 15 Rundle Street, Adelaide');
+INSERT INTO Title(titleId,title,description) VALUES ('36','North Terrace','SLSA B 4718. Designed by Eric Habershon McMichael Adelaide to provide offices for the Electric Supply Company, this six storey building is in the art deco style. On back of photograph is written: Acre 24 / North Terrace East / Kelvin Building / 1928 / Far side is 30.5 yards west of Pulteney Street / Frontage: 24 yards.');
+INSERT INTO Title(titleId,title,description) VALUES ('37','King William Street','SLSA B 26249. The Savings Bank of SA building stands proudly in King William Street. The building was opened in 1943.');
+INSERT INTO Title(titleId,title,description) VALUES ('38','Cnr King William Street and North Terrace','SLSA B 12323. Bank of New South Wales Building, October 1952. ');
+INSERT INTO Title(titleId,title,description) VALUES ('39','Metro Cinema Hindley Street','SLSA B 9807. On the corner of Hindley Street and Victoria Street. The building has been demolished');
+INSERT INTO Title(titleId,title,description) VALUES ('40','Department Window','SLSA B 69501. ''Maids Department'' window display of girls'' fashions.');
+INSERT INTO Title(titleId,title,description) VALUES ('41','Department Window','SLSA B 69510. Women''s hats in shop window 1940.');
+INSERT INTO Title(titleId,title,description) VALUES ('42','Department Window','SLSA B 69511. Shop window display of wedding fabrics 1940.');
+INSERT INTO Title(titleId,title,description) VALUES ('71','Adelaide Convention Centre','Opened in June 1987, the Adelaide Convention Centre was the first purpose-built convention centre in Australia. <a>http://www.adelaidecc.com.au/</a>');
+INSERT INTO Title(titleId,title,description) VALUES ('72','Railway Station','SLSA B 60624. Adelaide Railway Station.  For timetables see <a>https://www.adelaidemetro.com.au/</a>');
+INSERT INTO Title(titleId,title,description) VALUES ('73','Adelaide Casino','KNOW WHEN TO STOP. DON''T GO OVER THE TOP. GAMBLE RESPONSIBLY. Drink Responsibly. Minimum legislated return to player on gaming machines is 87.5%.  Features restaurants, bars, card tables, roulette and pokie machines. <a>http://www.adelaidecasino.com.au/</a>');
+INSERT INTO Title(titleId,title,description) VALUES ('74','Parliament House','<a>http://www.parliament.sa.gov.au/Pages/Welcome.aspx</a>');
+INSERT INTO Title(titleId,title,description) VALUES ('75','Festival Theatre','<a>http://www.adelaidefestivalcentre.com.au/</a>');
+INSERT INTO Title(titleId,title,description) VALUES ('76','Government House','<a>http://www.governor.sa.gov.au/</a>');
+INSERT INTO Title(titleId,title,description) VALUES ('77','Shrine of Remembrance','SLSA B 70742. View of the front face of the War Memorial on North Terrace');
+INSERT INTO Title(titleId,title,description) VALUES ('78','State Library','<a>http://www.slsa.sa.gov.au/site/page.cfm</a>');
+INSERT INTO Title(titleId,title,description) VALUES ('79','SA Museum','<a>http://www.samuseum.sa.gov.au/</a>');
+INSERT INTO Title(titleId,title,description) VALUES ('80','Art Gallery','<a>http://www.artgallery.sa.gov.au/agsa/home</a>');
+INSERT INTO Title(titleId,title,description) VALUES ('81','Old Police Barracks','<a>http://www.sapolicehistory.org/history.html</a>');
+INSERT INTO Title(titleId,title,description) VALUES ('82','Elder Hall - Adelaide University','<a>http://music.adelaide.edu.au/elderhall/</a>');
+INSERT INTO Title(titleId,title,description) VALUES ('83','Bonython Hall - Adelaide University','Bonython Hall was built in 1936.  Named after the Sir John Langdon Bonython who donated £40,000 for its construction. <a>http://adb.anu.edu.au/biography/bonython-sir-john-langdon-5286</a>');
+INSERT INTO Title(titleId,title,description) VALUES ('84','Bookman Building - UniSA','');
+INSERT INTO Title(titleId,title,description) VALUES ('85','Freemason''s Hall','<a>http://www.santfreemasons.org.au/content/overview</a>');
+INSERT INTO Title(titleId,title,description) VALUES ('86','Railway Station Main Entrance','Railway Station Main Entrance');
+INSERT INTO Title(titleId,title,description) VALUES ('90','Synagogue Place','SLSA B 16342.\nThe Synagogue in Synagogue Place Adelaide.');
+INSERT INTO Title(titleId,title,description) VALUES ('43','Rundle Street','SLSA B 9246. \nLooking West toward King William Street, a remarkably uncrowded Rundle Street (between Pulteney and King William Streets). Adelaide Arcade can be seen on the left. Rundle Street was named after John Rundle, a Director of the South Australia Company and member of the House of Commons.');
+INSERT INTO Title(titleId,title,description) VALUES ('44','Adelaide Arcade','SLSA B 2903.  The arcade opened 12 December 1885. A pair of Atlantes figures support the ceiling and form a guard to the entrance. The architect''s use of cast iron, plate glass and electric light made it a progressive building at the time, in fact it was one of Adelaide''s first buildings to use electric lighting. The current balconies were added in the late 1960s.');
+INSERT INTO Title(titleId,title,description) VALUES ('45','The Pavilion Theatre','SLSA B 6199. The Pavilion Theatre (Pav) was opened 22 June 1912 and was the first cinema in SA to show films continuously (11am-11pm). Extensive remodelling in 1940 saw it open as the Rex cinema after spending the previous 10 years as a minigolf link! It was demolished in 1961 to make way for the Cox-Foys extension (now Renaissance Centre).');
+INSERT INTO Title(titleId,title,description) VALUES ('46','Exhibition Building','SLSA B45674 18. Visit of HRH the Prince of Wales : Exhibition Building');
+INSERT INTO Title(titleId,title,description) VALUES ('47','Adelaide Railway Station','SLSA B 9875. Adelaide Railway Station before the second storey was added.');
+INSERT INTO Title(titleId,title,description) VALUES ('48','Surf life-savers with their boat','PRG 280/1/45/151. Five surf lifesavers with their boat on Glenelg beach in South Australia in 1924, with Glenelg jetty in the background.');
+INSERT INTO Title(titleId,title,description) VALUES ('49','Womadelaide','');
+INSERT INTO Title(titleId,title,description) VALUES ('50','AFL','<a>http://www.afl.com.au/‎</a>');
+INSERT INTO Title(titleId,title,description) VALUES ('51','Cricket','');
+INSERT INTO Title(titleId,title,description) VALUES ('52','Zoo','');
+INSERT INTO Title(titleId,title,description) VALUES ('53','Mall''s Balls','Commissioned by Adelaide City Council in 1977, ''Spheres'', or ''Mall''s Balls'' as known by locals, are two spheres made of polished stainless steel by sculptor Bert Flugelman. Each sphere has a diameter of 2.15 metres');
+INSERT INTO Title(titleId,title,description) VALUES ('54','Pigs','''A day out'' sculpted by Marguerite Derricourt');
+INSERT INTO Title(titleId,title,description) VALUES ('55','Tennis','');
+INSERT INTO Title(titleId,title,description) VALUES ('56','Adelaide Fringe','Garden of Unearthly Delights');
+INSERT INTO Title(titleId,title,description) VALUES ('57','Adelaide Fringe','Fringe Corner');
+INSERT INTO Title(titleId,title,description) VALUES ('58','Adelaide Aquatic Centre','');
+INSERT INTO Title(titleId,title,description) VALUES ('59','Light''s choice','Selecting the site for Adelaide was not easy. South Australia''s first Governor, John Hindmarsh, firmly disagreed with surveyor-general William Light''s choice. Instead preferring…');
+INSERT INTO Title(titleId,title,description) VALUES ('60','Light''s choice','Selecting the site for Adelaide was not easy. South Australia''s first Governor, John Hindmarsh, firmly disagreed with surveyor-general William Light''s choice. Instead preferring a site on Encounter Bay, close to the Murray Mouth. For further information go to: <a>http://www.samemory.sa.gov.au/site/page.cfm?c=7770</a>. Pictured: SLSA B 23766. Colonel William Light statue on Montefiore Hill overlooking Adelaide');
+INSERT INTO Title(titleId,title,description) VALUES ('61','North Adelaide Golf Course (North)','Public golf course. North Course, par 69 <a>http://northadelaidegolf.com.au/</a>.');
+INSERT INTO Title(titleId,title,description) VALUES ('62','North Adelaide Golf Course (South)','Public golf course. South Course, par 71 <a>http://northadelaidegolf.com.au/</a>.');
+INSERT INTO Title(titleId,title,description) VALUES ('63','Popeye','Elder Park Stop. The Popeye boats have been running on the River Torrens since 1935, travelling from the Adelaide Zoo to Elder Park. <a>http://www.thepopeye.com.au/</a>');
+INSERT INTO Title(titleId,title,description) VALUES ('64','Adelaide Gaol','<a>http://www.environment.sa.gov.au/adelaidegaol/Home</a>');
+INSERT INTO Title(titleId,title,description) VALUES ('65','Adelaide Botanic Gardens','<a>http://www.environment.sa.gov.au/botanicgardens/home</a>');
+INSERT INTO Title(titleId,title,description) VALUES ('66','Popeye','The Zoo Stop. The Popeye boats have been running on the River Torrens since 1935, travelling from the Adelaide Zoo to Elder Park. <a>http://www.thepopeye.com.au/</a>');
+INSERT INTO Title(titleId,title,description) VALUES ('67','Hotel Richmond','<a>http://www.hotelrichmond.com.au/</a>');
+INSERT INTO Title(titleId,title,description) VALUES ('68','Adelaide Arcade','Specialty stores. <a>http://adelaidearcade.com.au/</a>');
+INSERT INTO Title(titleId,title,description) VALUES ('69','Rundle Mall','Adelaide''s main shopping district <a>http://rundlemall.com.au/</a>');
+INSERT INTO Title(titleId,title,description) VALUES ('70','Regent Arcade ','Specialty stores. <a>http://www.regentarcade.com.au/</a>');
+INSERT INTO Title(titleId,title,description) VALUES ('87','Tram Stop','Rundle Mall Tram Stop.  FREE travel is available on the tram between South Terrace and the UNISA stop on North Terrace.  North bound travel to the Adelaide Entertainment Centre. South bound travel to Glenelg. <a>https://www.adelaidemetro.com.au/routes/Tram</a>');
+INSERT INTO Title(titleId,title,description) VALUES ('88','King William Street','The main street that runs through Adelaide CBD. Follow this street north to the River Torrens, Adelaide Oval and North Adelaide.  South to Victoria Square, Central Markets, Gouger Street and Vaele Gardens.');
+INSERT INTO Title(titleId,title,description) VALUES ('89','Rundle Mall Fountain','<a>http://rundlemall.com.au/about/rundle-mall-fountain.shtml</a>');
+INSERT INTO Title(titleId,title,description) VALUES ('91','New Fountain','The new water feature install in the Victoria Square rennovation');
+INSERT INTO Title(titleId,title,description) VALUES ('92','Post Office','Australia Post, Adelaide Post Office. <a>http://auspost.com.au/pol/app/locate/post-office/sa/adelaide/5001</a>');
+INSERT INTO Title(titleId,title,description) VALUES ('93','Adelaide Railway Station','Board trains here to  Belair, Blackwood, Gawler, Grange, Noarlunga, Osborne, Outer Harbour, Salisbury, Tonsley. <a>http://www.adelaidemetro.com.au/timetables/trains</a>');
+INSERT INTO Title(titleId,title,description) VALUES ('94','Shrine of Remembrance','Information about remembrance day can be found here <a>http://www.awm.gov.au/commemoration/remembrance/</a>  Legacy is a charity providing services to Australian families suffering financially and socially after the incapacitation or death of a spouse or parent, during or after their defence force service. Currently legacy cares for 100,000 widows and 1,900 children and disabled dependants throughout Australia. - See more at: <a>http://www.legacy.com.au/#sthash.mUzsvI2G.dpuf</a>');
+
+
+INSERT INTO Course (courseId,categoryId,CourseName, Description) VALUES (0,5,'Secret','Points hidden around Adelaide CBD');
+INSERT INTO Course (courseId,categoryId,CourseName, Description) VALUES (1,5,'Fact of the month','Facts about South Australia');
+INSERT INTO Course (courseId,categoryId,CourseName, Description) VALUES (2,1,'Victoria Square / Tarntanyangga','Walk around the newly redeveloped Victoria Square / Tarntanyangga.  View the masterplan for the <a>http://victoriasquareadelaide.com/masterplan/</a>');
+INSERT INTO Course (courseId,categoryId,CourseName, Description) VALUES (3,1,'Rundle Mall','Explore Adelaide''s main shopping district Rundle Mall. <a>http://rundlemall.com.au/</a>');
+INSERT INTO Course (courseId,categoryId,CourseName, Description) VALUES (4,1,'North Terrace','Stroll along North Terrace');
+INSERT INTO Course (courseId,categoryId,CourseName, Description) VALUES (5,6,'WOMADelaide','Internode presents, the World''s Festival, 7-10 March 2014 - Botanc Park <a>http://www.womadelaide.com.au/</a>.');
+INSERT INTO Course (courseId,categoryId,CourseName, Description) VALUES (6,6,'AFL','In 2014 the home of Australian Rules Football in South Australia moves to Adelaide Oval.<a>http://www.afl.com.au/‎</a>');
+INSERT INTO Course (courseId,categoryId,CourseName, Description) VALUES (7,6,'Cricket','Home of the SA West End Redbacks (Bupa Sheffield Shield and Ryobi One Day Cup competitions),  Adelaide Strikers (KFC T20 Big Bash League) and the SA Scorpions (Women''s National Cricket League - 50 over and T20) <a>http://www.cricketsa.com.au/</a>');
+INSERT INTO Course (courseId,categoryId,CourseName, Description) VALUES (8,7,'Zoo','See the Pandas <a>http://www.zoossa.com.au/adelaide-zoo</a>');
+INSERT INTO Course (courseId,categoryId,CourseName, Description) VALUES (9,6,'Tennis','<a>http://www.tennis.com.au/sa</a>');
+INSERT INTO Course (courseId,categoryId,CourseName, Description) VALUES (10,6,'Adelaide Fringe','BankSA, Adeliade Fringe 14 February - 16 March 2014 <a>adelaidefringe.com.au</a>');
+INSERT INTO Course (courseId,categoryId,CourseName, Description) VALUES (11,2,'Adelaide Aquatic Centre','Indoor swimming pools and fitness centre. <a>http://adelaideaquaticcentre.com.au/</a>');
+INSERT INTO Course (courseId,categoryId,CourseName, Description) VALUES (12,2,'North Adelaide Golf Course','Public golf course. South Course, par 71 <a>http://northadelaidegolf.com.au/</a>.');
+INSERT INTO Course (courseId,categoryId,CourseName, Description) VALUES (13,2,'North Adelaide Golf Course','Public golf course. North Course, par 69 <a>http://northadelaidegolf.com.au/</a>.');
+INSERT INTO Course (courseId,categoryId,CourseName, Description) VALUES (14,7,'Popeye','The Popeye boats have been running on the River Torrens since 1935, travelling from the Adelaide Zoo to Elder Park. <a>http://www.thepopeye.com.au/</a>');
+INSERT INTO Course (courseId,categoryId,CourseName, Description) VALUES (15,7,'Adelaide Old Gaol','<a>http://www.environment.sa.gov.au/adelaidegaol/Home</a>');
+INSERT INTO Course (courseId,categoryId,CourseName, Description) VALUES (16,7,'Adelaide Botanic Gardens','<a>http://www.environment.sa.gov.au/botanicgardens/home</a>');
+
+
+INSERT INTO Category (categoryId,categoryName) VALUES (1,'Sightseeing');
+INSERT INTO Category (categoryId,categoryName) VALUES (2,'Activities');
+INSERT INTO Category (categoryId,categoryName) VALUES (3,'Shopping');
+INSERT INTO Category (categoryId,categoryName) VALUES (4,'Nightlife');
+INSERT INTO Category (categoryId,categoryName) VALUES (5,'Secrets');
+INSERT INTO Category (categoryId,categoryName) VALUES (6,'Events');
+INSERT INTO Category (categoryId,categoryName) VALUES (7,'POIs');
+
+
+
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (0,12,1);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (0,13,2);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (0,14,3);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (0,15,4);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (0,16,5);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (0,17,6);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (0,18,7);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (0,19,8);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (0,20,9);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (0,21,10);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (0,22,11);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (0,24,12);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (0,25,13);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (0,26,18);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (0,27,14);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (0,28,19);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (0,32,20);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (0,33,6);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (0,35,22);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (0,36,9);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (0,37,15);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (0,38,16);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (0,39,17);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (0,55,21);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (0,56,22);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (1,10,12);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (2,1,1);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (2,2,8);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (2,3,7);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (2,4,4);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (2,5,5);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (2,6,2);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (2,8,10);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (2,9,3);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (2,7,11);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (2,11,9);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (2,23,6);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (3,29,8);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (3,30,5);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (3,31,2);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (3,34,9);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (3,93,6);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (3,94,7);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (3,57,1);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (3,58,3);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (3,37,4);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (4,40,1);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (4,41,2);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (4,42,3);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (4,43,4);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (4,44,5);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (4,45,6);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (4,46,7);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (4,47,8);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (4,48,9);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (4,49,10);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (4,50,11);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (4,51,12);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (4,52,13);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (4,53,14);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (4,54,15);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (5,63,1);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (5,64,2);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (5,65,3);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (5,66,4);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (5,67,5);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (5,68,6);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (5,69,7);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (5,70,8);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (5,71,9);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (5,72,10);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (6,73,1);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (6,74,2);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (6,75,3);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (6,76,4);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (6,77,5);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (6,78,6);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (7,79,1);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (7,80,2);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (7,81,3);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (7,82,4);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (7,83,5);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (7,84,6);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (8,85,1);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (8,86,2);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (8,87,3);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (8,88,4);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (8,89,5);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (8,90,6);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (8,91,7);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (8,92,8);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (9,95,1);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (9,96,2);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (9,97,3);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (9,98,4);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (9,99,5);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (10,100,1);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (10,101,2);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (10,102,3);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (10,103,4);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (10,104,5);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (10,105,6);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (10,106,7);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (10,107,8);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (10,108,9);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (10,109,10);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (10,110,11);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (10,111,12);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (12,118,1);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (12,119,2);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (12,120,3);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (12,121,4);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (12,122,5);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (12,123,6);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (12,124,7);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (12,125,8);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (12,126,9);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (12,127,10);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (12,128,11);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (12,129,12);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (12,130,13);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (12,131,14);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (12,132,15);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (12,133,16);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (12,134,17);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (12,135,18);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (12,136,19);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (13,137,1);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (13,138,2);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (13,139,3);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (13,140,4);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (13,141,5);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (13,142,6);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (13,143,7);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (13,144,8);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (13,145,9);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (13,146,10);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (13,147,11);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (13,148,12);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (13,149,13);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (13,150,14);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (13,151,15);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (13,152,16);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (13,153,17);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (13,154,18);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (14,155,1);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (14,156,2);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (15,157,1);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (15,158,2);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (15,159,3);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (15,160,4);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (15,161,5);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (15,162,6);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (15,163,7);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (16,164,1);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (16,165,2);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (16,166,3);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (16,167,4);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (16,168,5);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (16,169,6);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (16,170,7);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (11,112,1);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (11,113,2);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (11,114,3);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (11,115,4);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (11,116,5);
+INSERT INTO CourseLocation ( courseId, DingId, orderNumber) VALUES (16,172,8);
+
+		</insert>
+		<update>
+			    
+		</update>
+		<delete>
+			    
+		</delete>
+	</databaseVersion>
+	
+	
+</scavengeDb>
